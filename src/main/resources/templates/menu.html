@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .obj{
+            background: #e6e4e8;
+            border: black 2px solid;
+            margin: 5px;
+            padding: 5px;
+            list-style-type: none;
+            width: 21%;
+            height: 21%;
+            text-align: center;
+            float: left;
+        }
+
+        .obj1{
+            background: #c8e8d6;
+            border: black 1px solid;
+            margin: 2px;
+            padding: 2px;
+            list-style-type: none;
+            width: 18%;
+            height: 50px;
+            text-align: center;
+            /*float: left;*/
+        }
+
+    </style>
+</head>
+<body>
+
+<a th:href="'/product/menu/showAll'"><button class="obj1">Show All</button></a>
+<a th:href="'/product/menu/moreThan1000'"><button class="obj1">More Than 1000</button></a>
+<a th:href="'/product/menu/moreThan2000'"><button class="obj1">More Than 2000</button></a>
+<a th:href="'/product/menu/last10Products'"><button class="obj1">Last 10 products</button></a>
+<a th:href="'/product/menu/sortedByAlphabet'"><button class="obj1">Sorted By Alphabet</button></a>
+<a th:href="'/'"><button class="obj1">Add Product</button></a>
+
+<ul th:each="product : ${all}">
+
+    <li class="obj">
+        <a th:href="'/product/' + ${product.id} ">
+        <p th:text="'Name : ' + ${product.productName}"></p>
+        <p th:text="'Price : ' + ${product.price}"></p>
+        <p th:text="'Description : ' + ${product.description}"></p>
+        </a>
+    </li>
+</ul>
+
+
+</body>
+</html>

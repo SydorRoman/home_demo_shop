@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .obj{
+            background: #c5e870;
+            border: black 2px solid;
+            margin: 5px;
+            padding: 5px;
+            list-style-type: none;
+            width: 21%;
+            height: 21%;
+            text-align: center;
+            float: left;
+        }
+
+        a{
+            text-decoration-line: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>
+    <a th:href="'/product/menu'" th:text="Menu" ></a>
+</h2>
+
+<form action="/product/add" , method="post">
+    <input type="text" name="productName" placeholder="Product Name">
+    <input type="text" name="price" placeholder="Price">
+    <input type="text" name="description" placeholder="Description">
+    <input type="submit">
+</form>
+
+<ul th:each="product : ${all}">
+    <li class="obj">
+        <a th:href="'/product/' + ${product.id}"  th:text="'Name : ' +  ${product.productName} "></a>
+    <p th:text="'Price' + ${product.price}"><br></p>
+    <p th:text="'Description :'"><br></p>
+    <p th:text="${product.description}"></p>
+    <hr>
+    </li>
+</ul>
+
+</body>
+</html>
